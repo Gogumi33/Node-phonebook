@@ -1,16 +1,12 @@
 const express = require("express");
 const router = express.Router();
-
+const {getAllContacts, createContact} = require("../controllers/contactController"); // 모듈 가져오기.
 
 // 연락처 가져오기
 router.route("/") 
-    .get((req, res) => {
-        res.send("Contacts Page");
-    })
-    .post((req, res) => { // post는 'thunder client' 다운로드.
-        console.log(req.body);
-        res.send("Create Contacts!");
-    });
+    .get(getAllContacts) // 미리 정의해 둔 컨트롤러 함수 가져와 씀.
+    .post(createContact);
+    // -> 컨트롤러로 만들 시 훨씬 더 간결해진다.
     
 
 router.route("/:id") // 라우터 미들웨어 이용ver.
