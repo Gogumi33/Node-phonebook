@@ -1,3 +1,4 @@
+// MongoDB와 연결
 const mongoose = require("mongoose");
 require("dotenv").config(); // 먼저 실행.
 

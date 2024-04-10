@@ -3,8 +3,16 @@
 
 const express = require("express");
 const dbConnect = require("./config/dbConnect");
+const methodOverride = require("method-override");
 
 const app = express(); // express에서는 createServer() 해줄 필요 X. 이렇게 실행만 해주면 됨.
+
+app.set("view engine", "ejs"); // ejs 엔진을 사용하겠다.
+app.set("views", "./views");
+
+app.use(express.static("./public")); // 정적인 파일들은 따로 지정.
+// 그럼 자동으로 이 파일들 뒤져서 꺼내가게 된다.
+app.use(methodOverride("_method"));
 
 dbConnect();
 
@@ -19,7 +27,6 @@ app.use(express.urlencoded({extended:true}));
 
 // 루트를 미리 /contacts로 설정
 app.use("/contacts", require("./routes/contactRoutes")); // 미들웨어 모듈 만들어둔거 가져오기
-
 
 // @@@@@
 app.listen(3000, () => { // 3000번 포트에서 실행
