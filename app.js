@@ -16,15 +16,11 @@ app.use(methodOverride("_method"));
 
 dbConnect();
 
-app.get("/", (req, res) => { // 매우 간단함 - 요청방식 : 함수이름
-    res.send('Hello, Node!');
-});
-
 // 파싱을 위한 미들웨어 등록 (바디파서)
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-
+app.use("/", require("./routes/loginRoutes"));
 // 루트를 미리 /contacts로 설정
 app.use("/contacts", require("./routes/contactRoutes")); // 미들웨어 모듈 만들어둔거 가져오기
 
