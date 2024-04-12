@@ -12,7 +12,9 @@ app.set("views", "./views");
 
 app.use(express.static("./public")); // 정적인 파일들은 따로 지정.
 // 그럼 자동으로 이 파일들 뒤져서 꺼내가게 된다.
-app.use(methodOverride("_method"));
+
+app.use(methodOverride("_method")); // 🚑🚑🚑 에러났던 부분!!!!
+// GET과 POST만 받아들이면 PUT과 DELETE는 이용할 수 없기 때문에 헤더를 통해 메소드를 별도로 설정해주면 저걸 key 값으로 해서 작업을 할 수 있다
 
 dbConnect();
 

@@ -1,0 +1,24 @@
+<%- include("./include/_header") %>
+
+  <!-- Main : 아이디와 비번 / 비번확인 -->
+  <!-- 이 .ejs파일을 만들었다면 이 파일을 언제 렌더링 할 것인지 컨트롤러 함수 만들어야 함 -->
+  <!-- 이후 register경로로 GET요청이 들어왔을 때 ejs파일을 실행할 컨트롤러가 만들어진 것이고, -->
+  <!-- 위 getRegister함수를 실행하려면 라우트 코드를 작성해주어야 한다. -->
+  <main id="site-main">
+
+    <h3>사용자 등록</h3>
+
+    <!-- register 경로로 POST 처리를 해라 -->
+    <form class="register" method="POST" action"/register">
+      <label for="username"><b>아이디</b></label>
+      <input type="text" placeholder="아이디" name="username" id="username">
+      <label for="password"><b>비밀번호</b></label>
+      <input type="password" placeholder="비밀번호" name="password" id="password">
+      <label for="password2"><b>비밀번호 확인</b></label>
+      <input type="password" placeholder="비밀번호 확인" name="password2" id="password2">
+      <input type="submit" value="등록" class="register-btn">
+    </form>    
+  </main>
+  <!-- /Main -->
+
+<%- include("./include/_footer") %>
